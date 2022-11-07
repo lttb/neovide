@@ -178,7 +178,7 @@ impl CachingShaper {
         let (metrics, glyph_advance) = self.info();
         let font_width = (glyph_advance + 0.5).floor() as u64;
 
-        let bare_font_height = (metrics.ascent + metrics.descent + metrics.leading).ceil();
+        let bare_font_height = (7.0 + metrics.ascent + metrics.descent + metrics.leading).ceil();
         let font_height = bare_font_height as i64 + self.linespace;
 
         (
@@ -366,7 +366,7 @@ impl CachingShaper {
 
             shaper.shape_with(|glyph_cluster| {
                 for glyph in glyph_cluster.glyphs {
-                    let position = ((glyph.data as u64 * glyph_width) as f32, glyph.y);
+                    let position = ((glyph.data as u64 * glyph_width) as f32, glyph.y + 3.5);
                     glyph_data.push((glyph.id, position));
                 }
             });
